@@ -13,31 +13,108 @@ const typographyUtil: TypographyUtils = {
      * @param px - The pixel value to convert.
      * @returns The equivalent value in rem units as a string.
      */
-    pxToRem: (px: number) => `${px / HTML_FONT_SIZE}` + 'rem',
+    pxToRem: (px: number) => `${px / HTML_FONT_SIZE}rem`,
 };
 
-// TODO: Add the necessary typographies here.
 /**
- * Creates a typography block with various styles
- * @param theme - Theme object to access the breakpoints.
- * @returns The function returns a TypographyOptions object, which includes various typography settings,
+ * Creates a typography block mapped to the Mobile & Desktop Figma designs.
+ * @param theme - Theme object to access breakpoints.
+ * @returns TypographyOptions object with responsive styles.
  */
 const typographyStyle = (theme: Theme): TypographyOptions => ({
-    fontFamily: 'Inter',
+    fontFamily: `'Inter', 'Segoe UI', Roboto, sans-serif`,
     htmlFontSize: HTML_FONT_SIZE,
 
-    fontWeightLight: 400,
-    fontWeightRegular: 500,
-    fontWeightMedium: 600,
+    fontWeightLight: 300,
+    fontWeightRegular: 400,
+    fontWeightMedium: 500,
+    fontWeightBold: 700,
 
     h1: {
-        fontSize: typographyUtil.pxToRem(30),
+        fontSize: typographyUtil.pxToRem(22),
         fontWeight: 700,
-        lineHeight: typographyUtil.pxToRem(45),
+        lineHeight: 1.25,
+        letterSpacing: '-0.02em',
 
         [theme.breakpoints.up('md')]: {
-            fontSize: typographyUtil.pxToRem(48),
-            lineHeight: typographyUtil.pxToRem(62.5),
+            fontSize: typographyUtil.pxToRem(26),
+        },
+    },
+
+    h2: {
+        fontSize: typographyUtil.pxToRem(20),
+        fontWeight: 700,
+        lineHeight: 1.3,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: typographyUtil.pxToRem(24),
+        },
+    },
+
+    h3: {
+        fontSize: typographyUtil.pxToRem(18),
+        fontWeight: 500,
+        lineHeight: 1.35,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: typographyUtil.pxToRem(20),
+        },
+    },
+
+    subtitle1: {
+        fontSize: typographyUtil.pxToRem(14),
+        fontWeight: 500,
+        lineHeight: 1.4,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: typographyUtil.pxToRem(16),
+        },
+    },
+
+    subtitle2: {
+        fontSize: typographyUtil.pxToRem(13),
+        fontWeight: 500,
+        lineHeight: 1.4,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: typographyUtil.pxToRem(14),
+        },
+    },
+
+    body1: {
+        fontSize: typographyUtil.pxToRem(14),
+        fontWeight: 400,
+        lineHeight: 1.5,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: typographyUtil.pxToRem(15),
+        },
+    },
+
+    body2: {
+        fontSize: typographyUtil.pxToRem(12),
+        fontWeight: 400,
+        lineHeight: 1.45,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: typographyUtil.pxToRem(14),
+        },
+    },
+
+    caption: {
+        fontSize: typographyUtil.pxToRem(12),
+        fontWeight: 400,
+        lineHeight: 1.35,
+    },
+
+    button: {
+        fontSize: typographyUtil.pxToRem(13),
+        fontWeight: 500,
+        lineHeight: 1.4,
+        textTransform: 'none',
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: typographyUtil.pxToRem(14),
         },
     },
 });
