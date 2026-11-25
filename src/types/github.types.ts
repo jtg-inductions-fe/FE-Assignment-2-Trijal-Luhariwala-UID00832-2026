@@ -1,19 +1,22 @@
-export interface GitHubUser {
+export interface User {
     id: number;
     login: string;
-    avatar_url: string;
-    html_url: string;
     name: string | null;
-    location: string | null;
-    email: string | null;
+    avatarUrl: string;
+    profileUrl: string;
     bio: string | null;
+    location: string | null;
     blog: string | null;
+    email: string | null;
     followers: number;
     following: number;
+    publicRepos: number;
+    createdAt: string;
 }
 
-export interface GitHubSearchResponse {
-    total_count: number;
-    incomplete_results: boolean;
-    items: Pick<GitHubUser, 'id' | 'login' | 'avatar_url' | 'html_url'>[];
+export interface SearchUserItem {
+    id: number;
+    login: string;
+    avatarUrl: string;
+    profileUrl: string;
 }
