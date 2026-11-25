@@ -23,7 +23,7 @@ export const NavbarContainer = () => {
     };
 
     const handleLogout = () => {
-        // TODO: Replace with dispatch
+        // Replace with dispatch
         localStorage.removeItem(STORAGE_KEYS.AUTH_TOKEN);
         localStorage.removeItem(STORAGE_KEYS.AUTH_USER);
         void navigate(ROUTES.HOME);

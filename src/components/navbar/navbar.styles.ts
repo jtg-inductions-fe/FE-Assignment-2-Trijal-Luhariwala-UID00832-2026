@@ -18,9 +18,9 @@ export const StyledAppBar = styled(AppBar)(({ theme }) => ({
 
 export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     width: '100%',
-    maxWidth: '120rem',
+    maxWidth: theme.mixins.toRem(2000),
     margin: '0 auto',
-    minHeight: '6.4rem',
+    minHeight: theme.mixins.toRem(80),
     paddingInline: theme.spacing(4),
     ...theme.mixins.flex('space-between', 'center', 'row'),
 }));
@@ -85,7 +85,7 @@ export const AuthActionButton = styled(Button)(({ theme }) => ({
 
 export const MobileDrawer = styled(Drawer)(({ theme }) => ({
     '& .MuiDrawer-paper': {
-        width: '26rem',
+        width: theme.mixins.toRem(250),
         backgroundColor: theme.palette.background.paper,
         borderRight: `1px solid ${theme.palette.divider}`,
         backgroundImage: 'none',
