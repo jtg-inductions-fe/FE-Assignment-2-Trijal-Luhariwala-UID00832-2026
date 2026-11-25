@@ -11,8 +11,8 @@ import InterRegularTtf from '@assets/fonts/inter/inter-regular.ttf';
 import InterRegularWoff2 from '@assets/fonts/inter/inter-regular.woff2';
 
 export const components: Components = {
-  MuiCssBaseline: {
-    styleOverrides: `
+    MuiCssBaseline: {
+        styleOverrides: `
             html {
               font-size: 62.5%;
               height: 100%;

@@ -17,7 +17,7 @@ export const NotFound = () => (
             <NotFoundContent>
                 <NotFoundImage
                     src={notFoundImage}
-                    alt="Ooops... page not found. The route you're looking for drifted out of orbit or doesn't exist in GitHub Explorer."
+                    alt="This page does not exist in GitHub Explorer."
                 />
 
                 <Button

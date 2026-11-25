@@ -7,5 +7,3 @@ export const App = () => (
         <AppRoutes />
     </BrowserRouter>
 );
-
-export default App;

@@ -6,9 +6,38 @@ export const COLORS = {
     PRIMARY: {
         MAIN: '#238636',
         LIGHT: '#2EA043',
+        DARK: '#196C2E',
+        CONTRAST_TEXT: '#FFFFFF',
     },
     SECONDARY: {
         MAIN: '#58A6FF',
+        LIGHT: '#79C0FF',
+        DARK: '#1F6FEB',
+        CONTRAST_TEXT: '#0D1117',
+    },
+    ERROR: {
+        MAIN: '#DA3633',
+        LIGHT: '#F85149',
+        DARK: '#B62324',
+        CONTRAST_TEXT: '#FFFFFF',
+    },
+    WARNING: {
+        MAIN: '#D29922',
+        LIGHT: '#E3B341',
+        DARK: '#9E6A03',
+        CONTRAST_TEXT: '#0D1117',
+    },
+    INFO: {
+        MAIN: '#58A6FF',
+        LIGHT: '#79C0FF',
+        DARK: '#1F6FEB',
+        CONTRAST_TEXT: '#0D1117',
+    },
+    SUCCESS: {
+        MAIN: '#238636',
+        LIGHT: '#3FB950',
+        DARK: '#196C2E',
+        CONTRAST_TEXT: '#FFFFFF',
     },
     BACKGROUND: {
         DEFAULT: '#0D1117',
@@ -19,7 +48,6 @@ export const COLORS = {
         SECONDARY: '#8B949E',
     },
     BORDER: '#30363D',
-    ERROR: '#F85149',
 } as const;
 
 /**

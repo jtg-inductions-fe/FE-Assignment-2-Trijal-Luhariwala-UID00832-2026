@@ -8,7 +8,7 @@ import { CssBaseline, ThemeProvider } from '@mui/material';
 import { store } from '@store';
 import { theme } from '@theme';
 
-import App from './app';
+import { App } from './app';
 
 const rootElement = document.getElementById('root') as HTMLElement;
 
