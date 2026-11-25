@@ -45,7 +45,7 @@ const flex = (
  * @param base - Base root font size in px (defaults to HTML_FONT_SIZE)
  * @returns Formatted rem string (e.g., '1.6rem')
  */
-const toRem = (px: number, base: number = HTML_FONT_SIZE): string =>
+export const toRem = (px: number, base: number = HTML_FONT_SIZE): string =>
     `${px / base}rem`;
 
 export const mixins: MixinsOptions = {

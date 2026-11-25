@@ -1,4 +1,6 @@
-export declare module '@mui/material/styles/createMixins' {
+import type { CSSProperties } from 'react';
+
+declare module '@mui/material/styles' {
     interface Mixins {
         lineClamp: (lines?: number) => CSSProperties;
         flex: (

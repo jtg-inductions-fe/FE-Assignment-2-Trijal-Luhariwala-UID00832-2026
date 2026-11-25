@@ -1,7 +1,7 @@
 import { styled } from '@mui/material/styles';
 
 export const NotFoundWrapper = styled('main')(({ theme }) => ({
-    minHeight: '100vh',
+    flex: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(6, 4),
     ...theme.mixins.flex('center', 'center', 'column'),
@@ -13,7 +13,7 @@ export const NotFoundContent = styled('div')(({ theme }) => ({
 
 export const NotFoundImage = styled('img')(({ theme }) => ({
     width: '100%',
-    maxWidth: '64rem',
+    maxWidth: theme.mixins.toRem(700),
     height: 'auto',
     display: 'block',
     borderRadius: theme.spacing(2),
