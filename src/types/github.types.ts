@@ -20,3 +20,8 @@ export interface SearchUserItem {
     avatarUrl: string;
     profileUrl: string;
 }
+
+export interface SearchUsersResponse {
+    totalCount: number;
+    items: SearchUserItem[];
+}

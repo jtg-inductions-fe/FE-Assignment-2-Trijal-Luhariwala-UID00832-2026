@@ -51,6 +51,17 @@ export const COLORS = {
 } as const;
 
 /**
+ * Font weights to be used throughout the assignment.
+ * @constant
+ */
+export const FONT_WEIGHT = {
+    LIGHT: 300,
+    REGULAR: 400,
+    MEDIUM: 500,
+    BOLD: 700,
+} as const;
+
+/**
  * Base font size in pixels (matches html font-size: 62.5%).
  * @constant
  */

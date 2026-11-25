@@ -1,7 +1,7 @@
 import type { Theme } from '@mui/material/styles';
 import type { TypographyOptions } from '@mui/material/styles/createTypography';
 
-import { HTML_FONT_SIZE } from '@constant';
+import { FONT_WEIGHT, HTML_FONT_SIZE } from '@constant';
 
 /**
  * Creates a typography block mapped to the Mobile & Desktop Figma designs.
@@ -12,14 +12,14 @@ export const typography = (theme: Theme): TypographyOptions => ({
     fontFamily: `'Inter', 'Segoe UI', Roboto, sans-serif`,
     htmlFontSize: HTML_FONT_SIZE,
 
-    fontWeightLight: 300,
-    fontWeightRegular: 400,
-    fontWeightMedium: 500,
-    fontWeightBold: 700,
+    fontWeightLight: FONT_WEIGHT.LIGHT,
+    fontWeightRegular: FONT_WEIGHT.REGULAR,
+    fontWeightMedium: FONT_WEIGHT.MEDIUM,
+    fontWeightBold: FONT_WEIGHT.BOLD,
 
     h1: {
         fontSize: theme.mixins.toRem(22),
-        fontWeight: 700,
+        fontWeight: FONT_WEIGHT.BOLD,
         lineHeight: 1.25,
         letterSpacing: '-0.02em',
 
@@ -30,7 +30,7 @@ export const typography = (theme: Theme): TypographyOptions => ({
 
     h2: {
         fontSize: theme.mixins.toRem(20),
-        fontWeight: 700,
+        fontWeight: FONT_WEIGHT.BOLD,
         lineHeight: 1.3,
 
         [theme.breakpoints.up('md')]: {
@@ -40,7 +40,7 @@ export const typography = (theme: Theme): TypographyOptions => ({
 
     h3: {
         fontSize: theme.mixins.toRem(18),
-        fontWeight: 500,
+        fontWeight: FONT_WEIGHT.MEDIUM,
         lineHeight: 1.35,
 
         [theme.breakpoints.up('md')]: {
@@ -50,7 +50,7 @@ export const typography = (theme: Theme): TypographyOptions => ({
 
     subtitle1: {
         fontSize: theme.mixins.toRem(14),
-        fontWeight: 500,
+        fontWeight: FONT_WEIGHT.MEDIUM,
         lineHeight: 1.4,
 
         [theme.breakpoints.up('md')]: {
@@ -60,7 +60,7 @@ export const typography = (theme: Theme): TypographyOptions => ({
 
     subtitle2: {
         fontSize: theme.mixins.toRem(13),
-        fontWeight: 500,
+        fontWeight: FONT_WEIGHT.MEDIUM,
         lineHeight: 1.4,
 
         [theme.breakpoints.up('md')]: {
@@ -70,7 +70,7 @@ export const typography = (theme: Theme): TypographyOptions => ({
 
     body1: {
         fontSize: theme.mixins.toRem(14),
-        fontWeight: 400,
+        fontWeight: FONT_WEIGHT.REGULAR,
         lineHeight: 1.5,
 
         [theme.breakpoints.up('md')]: {
@@ -80,7 +80,7 @@ export const typography = (theme: Theme): TypographyOptions => ({
 
     body2: {
         fontSize: theme.mixins.toRem(12),
-        fontWeight: 400,
+        fontWeight: FONT_WEIGHT.REGULAR,
         lineHeight: 1.45,
 
         [theme.breakpoints.up('md')]: {
@@ -90,13 +90,13 @@ export const typography = (theme: Theme): TypographyOptions => ({
 
     caption: {
         fontSize: theme.mixins.toRem(12),
-        fontWeight: 400,
+        fontWeight: FONT_WEIGHT.REGULAR,
         lineHeight: 1.35,
     },
 
     button: {
         fontSize: theme.mixins.toRem(13),
-        fontWeight: 500,
+        fontWeight: FONT_WEIGHT.MEDIUM,
         lineHeight: 1.4,
         textTransform: 'none',
 

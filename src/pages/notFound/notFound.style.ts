@@ -1,7 +1,8 @@
 import { styled } from '@mui/material/styles';
 
-export const NotFoundWrapper = styled('main')(({ theme }) => ({
+export const NotFoundWrapper = styled('div')(({ theme }) => ({
     flex: 1,
+    height: '100vh',
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing(6, 4),
     ...theme.mixins.flex('center', 'center', 'column'),
