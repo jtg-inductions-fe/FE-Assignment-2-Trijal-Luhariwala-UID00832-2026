@@ -1,3 +1,4 @@
+import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
 export const NotFoundWrapper = styled('div')(({ theme }) => ({
@@ -19,3 +20,13 @@ export const NotFoundImage = styled('img')(({ theme }) => ({
     display: 'block',
     borderRadius: theme.spacing(2),
 }));
+
+export const HiddenHeading = styled(Typography)({
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    padding: 0,
+    margin: '-1px',
+    overflow: 'hidden',
+    border: 0,
+});
