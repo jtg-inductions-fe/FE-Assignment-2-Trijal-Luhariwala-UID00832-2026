@@ -1,45 +1,107 @@
 import type { Theme } from '@mui/material/styles';
-import type {
-    TypographyOptions,
-    TypographyUtils,
-} from '@mui/material/styles/createTypography';
+import type { TypographyOptions } from '@mui/material/styles/createTypography';
 
-import { HTML_FONT_SIZE } from '@constant';
+import { FONT_WEIGHT, HTML_FONT_SIZE } from '@constant';
 
-/* Custom px to rem function */
-const typographyUtil: TypographyUtils = {
-    /**
-     * Converts a pixel value to rem units.
-     * @param px - The pixel value to convert.
-     * @returns The equivalent value in rem units as a string.
-     */
-    pxToRem: (px: number) => `${px / HTML_FONT_SIZE}` + 'rem',
-};
-
-// TODO: Add the necessary typographies here.
 /**
- * Creates a typography block with various styles
- * @param theme - Theme object to access the breakpoints.
- * @returns The function returns a TypographyOptions object, which includes various typography settings,
+ * Creates a typography block mapped to the Mobile & Desktop Figma designs.
+ * @param theme - Theme object to access breakpoints and mixins.
+ * @returns TypographyOptions object with responsive styles.
  */
-const typographyStyle = (theme: Theme): TypographyOptions => ({
-    fontFamily: 'Inter',
+export const typography = (theme: Theme): TypographyOptions => ({
+    fontFamily: `'Inter', 'Segoe UI', Roboto, sans-serif`,
     htmlFontSize: HTML_FONT_SIZE,
 
-    fontWeightLight: 400,
-    fontWeightRegular: 500,
-    fontWeightMedium: 600,
+    fontWeightLight: FONT_WEIGHT.LIGHT,
+    fontWeightRegular: FONT_WEIGHT.REGULAR,
+    fontWeightMedium: FONT_WEIGHT.MEDIUM,
+    fontWeightBold: FONT_WEIGHT.BOLD,
 
     h1: {
-        fontSize: typographyUtil.pxToRem(30),
-        fontWeight: 700,
-        lineHeight: typographyUtil.pxToRem(45),
+        fontSize: theme.mixins.toRem(22),
+        fontWeight: FONT_WEIGHT.BOLD,
+        lineHeight: 1.25,
+        letterSpacing: '-0.02em',
 
         [theme.breakpoints.up('md')]: {
-            fontSize: typographyUtil.pxToRem(48),
-            lineHeight: typographyUtil.pxToRem(62.5),
+            fontSize: theme.mixins.toRem(26),
+        },
+    },
+
+    h2: {
+        fontSize: theme.mixins.toRem(20),
+        fontWeight: FONT_WEIGHT.BOLD,
+        lineHeight: 1.3,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: theme.mixins.toRem(24),
+        },
+    },
+
+    h3: {
+        fontSize: theme.mixins.toRem(18),
+        fontWeight: FONT_WEIGHT.MEDIUM,
+        lineHeight: 1.35,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: theme.mixins.toRem(20),
+        },
+    },
+
+    subtitle1: {
+        fontSize: theme.mixins.toRem(14),
+        fontWeight: FONT_WEIGHT.MEDIUM,
+        lineHeight: 1.4,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: theme.mixins.toRem(16),
+        },
+    },
+
+    subtitle2: {
+        fontSize: theme.mixins.toRem(13),
+        fontWeight: FONT_WEIGHT.MEDIUM,
+        lineHeight: 1.4,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: theme.mixins.toRem(14),
+        },
+    },
+
+    body1: {
+        fontSize: theme.mixins.toRem(14),
+        fontWeight: FONT_WEIGHT.REGULAR,
+        lineHeight: 1.5,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: theme.mixins.toRem(15),
+        },
+    },
+
+    body2: {
+        fontSize: theme.mixins.toRem(12),
+        fontWeight: FONT_WEIGHT.REGULAR,
+        lineHeight: 1.45,
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: theme.mixins.toRem(14),
+        },
+    },
+
+    caption: {
+        fontSize: theme.mixins.toRem(12),
+        fontWeight: FONT_WEIGHT.REGULAR,
+        lineHeight: 1.35,
+    },
+
+    button: {
+        fontSize: theme.mixins.toRem(13),
+        fontWeight: FONT_WEIGHT.MEDIUM,
+        lineHeight: 1.4,
+        textTransform: 'none',
+
+        [theme.breakpoints.up('md')]: {
+            fontSize: theme.mixins.toRem(14),
         },
     },
 });
-
-export const typography = { typographyStyle, typographyUtil };

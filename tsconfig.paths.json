@@ -1,10 +1,16 @@
 {
     "compilerOptions": {
-        "baseUrl": "./src",
         "paths": {
-            "@assets/*": ["assets/*"],
-            "@constant": ["constant/index"],
-            "@theme": ["theme/index"]
+            "@assets/*": ["./src/assets/*"],
+            "@constant": ["./src/constant/index"],
+            "@theme": ["./src/theme/index"],
+            "@components": ["./src/components/index"],
+            "@containers": ["./src/containers/index"],
+            "@services": ["./src/services/index"],
+            "@store": ["./src/store/index"],
+            "@routes": ["./src/routes/index"],
+            "@types": ["./src/types/index"],
+            "@pages": ["./src/pages"]
         }
     }
 }
