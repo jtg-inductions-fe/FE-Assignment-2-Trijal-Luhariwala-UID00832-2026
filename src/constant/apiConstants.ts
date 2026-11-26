@@ -42,4 +42,7 @@ export const ERROR_MESSAGES = {
         'GitHub API rate limit exceeded. Log in with a PAT or try again later.',
     NETWORK_ERROR: 'Network error. Please check your connection and try again.',
     GENERIC: 'Something went wrong. Please try again.',
+    FORBIDDEN: 'Access forbidden. Check your token permissions and try again.',
+    VALIDATION_ERROR:
+        'Invalid search query or request parameters. Please refine your input.',
 } as const;

@@ -1,6 +1,20 @@
-import axios, { type AxiosError } from 'axios';
+import axios, { type AxiosResponse } from 'axios';
 
 import { APP_CONFIG, ERROR_MESSAGES, STORAGE_KEYS } from '@constant';
+
+interface GitHubErrorBody {
+    message?: string;
+}
+
+type UnauthorizedHandler = () => void;
+
+let onUnauthorizedHandler: UnauthorizedHandler | null = null;
+
+export const setUnauthorizedHandler = (
+    handler: UnauthorizedHandler | null,
+): void => {
+    onUnauthorizedHandler = handler;
+};
 
 export class ApiError extends Error {
     readonly status: number | null;
@@ -12,14 +26,36 @@ export class ApiError extends Error {
     }
 }
 
-const mapStatusToMessage = (status?: number): string => {
-    switch (status) {
+const isRateLimitResponse = (
+    response: AxiosResponse<GitHubErrorBody>,
+): boolean => {
+    const headers = response.headers as Record<string, unknown>;
+    const remaining = headers['x-ratelimit-remaining'];
+    const retryAfter = headers['retry-after'];
+    const apiMessage = response.data?.message?.toLowerCase() ?? '';
+    return (
+        String(remaining) === '0' ||
+        Boolean(retryAfter) ||
+        apiMessage.includes('rate limit')
+    );
+};
+
+const mapResponseToMessage = (
+    response: AxiosResponse<GitHubErrorBody>,
+): string => {
+    switch (response.status) {
         case 401:
             return ERROR_MESSAGES.INVALID_PAT;
         case 403:
-            return ERROR_MESSAGES.RATE_LIMIT;
+            return isRateLimitResponse(response)
+                ? ERROR_MESSAGES.RATE_LIMIT
+                : ERROR_MESSAGES.FORBIDDEN;
         case 404:
             return ERROR_MESSAGES.USER_NOT_FOUND;
+        case 422:
+            return ERROR_MESSAGES.VALIDATION_ERROR;
+        case 429:
+            return ERROR_MESSAGES.RATE_LIMIT;
         default:
             return ERROR_MESSAGES.GENERIC;
     }
@@ -57,17 +93,19 @@ apiClient.interceptors.response.use(
             return Promise.reject(error);
         }
 
-        if (axios.isAxiosError(error)) {
-            const axiosError = error as AxiosError;
-            const status = axiosError.response?.status ?? null;
+        if (axios.isAxiosError<GitHubErrorBody>(error)) {
+            const axiosError = error;
+            const response = axiosError.response;
+            const status = response?.status ?? null;
 
             if (status === 401) {
                 localStorage.removeItem(STORAGE_KEYS.AUTH_TOKEN);
                 localStorage.removeItem(STORAGE_KEYS.AUTH_USER);
+                onUnauthorizedHandler?.();
             }
 
-            const message = axiosError.response
-                ? mapStatusToMessage(axiosError.response.status)
+            const message = response
+                ? mapResponseToMessage(response)
                 : ERROR_MESSAGES.NETWORK_ERROR;
 
             return Promise.reject(new ApiError(message, status));
