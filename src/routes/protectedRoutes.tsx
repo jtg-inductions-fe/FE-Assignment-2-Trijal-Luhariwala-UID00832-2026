@@ -1,14 +1,11 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
-import { ROUTES, STORAGE_KEYS } from '@constant';
+import { ROUTES } from '@constant';
+import { selectIsAuthenticated, useAppSelector } from '@store';
 
 export const ProtectedRoute = () => {
     const location = useLocation();
-
-    // Replace with useAppSelector(auth.isAuthenticated)
-    const isAuthenticated = Boolean(
-        localStorage.getItem(STORAGE_KEYS.AUTH_TOKEN),
-    );
+    const isAuthenticated = useAppSelector(selectIsAuthenticated);
 
     if (!isAuthenticated) {
         return (
