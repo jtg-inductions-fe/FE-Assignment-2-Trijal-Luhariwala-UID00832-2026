@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 
 import { ROUTES } from '@constant';
 import { type NavItem } from '@types';
+
 import { AuthActionButton, StyledNavLink } from './navbar.styles';
 
 interface NavContentProps {

@@ -1,5 +1,6 @@
-import { ROUTES } from './routeConstants';
 import { type NavItem } from '@types';
+
+import { ROUTES } from './routeConstants';
 
 export const BASE_NAV_ITEMS: readonly NavItem[] = [
     { label: 'Search', path: ROUTES.HOME },

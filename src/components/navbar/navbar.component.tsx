@@ -3,7 +3,6 @@ import MenuIcon from '@mui/icons-material/Menu';
 import { IconButton, Typography } from '@mui/material';
 
 import { APP_CONFIG, getNavItems, ROUTES } from '@constant';
-import { NavContent } from './navbarContent.component';
 
 import {
     BrandGroup,
@@ -16,6 +15,7 @@ import {
     StyledAppBar,
     StyledToolbar,
 } from './navbar.styles';
+import { NavContent } from './navbarContent.component';
 
 export interface NavbarProps {
     isAuthenticated: boolean;
