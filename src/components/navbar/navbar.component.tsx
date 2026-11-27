@@ -2,15 +2,14 @@ import { Link } from 'react-router-dom';
 
 import CloseIcon from '@mui/icons-material/Close';
 import MenuIcon from '@mui/icons-material/Menu';
-import { IconButton } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 
-import { ROUTES } from '@constant';
+import { APP_CONFIG, getNavItems, type NavItem, ROUTES } from '@constant';
 
 import {
     AuthActionButton,
     BrandGroup,
     BrandLink,
-    BrandTitle,
     DesktopNav,
     DrawerHeader,
     DrawerNav,
@@ -29,13 +28,61 @@ export interface NavbarProps {
     onLogout: () => void;
 }
 
-const PUBLIC_NAV_ITEMS = [{ label: 'Search', path: ROUTES.HOME }];
+interface NavContentProps {
+    navItems: readonly NavItem[];
+    isAuthenticated: boolean;
+    onLogout: () => void;
+    onItemClick?: () => void;
+    fullWidthAction?: boolean;
+}
 
-const AUTH_NAV_ITEMS = [
-    { label: 'Search', path: ROUTES.HOME },
-    { label: 'Suggestions', path: ROUTES.SUGGESTIONS },
-    { label: 'Profile', path: ROUTES.PROFILE },
-];
+const NavContent = ({
+    navItems,
+    isAuthenticated,
+    onLogout,
+    onItemClick,
+    fullWidthAction = false,
+}: NavContentProps) => {
+    const handleLogoutClick = () => {
+        onItemClick?.();
+        onLogout();
+    };
+
+    return (
+        <>
+            {navItems.map((item) => (
+                <StyledNavLink
+                    key={item.path}
+                    to={item.path}
+                    end={item.path === ROUTES.HOME}
+                    onClick={onItemClick}
+                >
+                    {item.label}
+                </StyledNavLink>
+            ))}
+
+            {isAuthenticated ? (
+                <AuthActionButton
+                    variant="outlined"
+                    fullWidth={fullWidthAction}
+                    onClick={handleLogoutClick}
+                >
+                    Logout
+                </AuthActionButton>
+            ) : (
+                <AuthActionButton
+                    component={Link}
+                    to={ROUTES.LOGIN}
+                    variant="outlined"
+                    fullWidth={fullWidthAction}
+                    onClick={onItemClick}
+                >
+                    Login
+                </AuthActionButton>
+            )}
+        </>
+    );
+};
 
 export const Navbar = ({
     isAuthenticated,
@@ -44,12 +91,7 @@ export const Navbar = ({
     onCloseDrawer,
     onLogout,
 }: NavbarProps) => {
-    const navItems = isAuthenticated ? AUTH_NAV_ITEMS : PUBLIC_NAV_ITEMS;
-
-    const handleLogoutClick = () => {
-        onCloseDrawer();
-        onLogout();
-    };
+    const navItems = getNavItems(isAuthenticated);
 
     return (
         <>
@@ -66,39 +108,18 @@ export const Navbar = ({
                         </MenuToggleButton>
 
                         <BrandLink to={ROUTES.HOME}>
-                            <BrandTitle component="span" variant="h1">
-                                GitHub Explorer
-                            </BrandTitle>
+                            <Typography component="span" variant="h1">
+                                {APP_CONFIG.APP_NAME}
+                            </Typography>
                         </BrandLink>
                     </BrandGroup>
 
                     <DesktopNav aria-label="Main navigation">
-                        {navItems.map((item) => (
-                            <StyledNavLink
-                                key={item.path}
-                                to={item.path}
-                                end={item.path === ROUTES.HOME}
-                            >
-                                {item.label}
-                            </StyledNavLink>
-                        ))}
-
-                        {isAuthenticated ? (
-                            <AuthActionButton
-                                variant="outlined"
-                                onClick={onLogout}
-                            >
-                                Logout
-                            </AuthActionButton>
-                        ) : (
-                            <AuthActionButton
-                                component={Link}
-                                to={ROUTES.LOGIN}
-                                variant="outlined"
-                            >
-                                Login
-                            </AuthActionButton>
-                        )}
+                        <NavContent
+                            navItems={navItems}
+                            isAuthenticated={isAuthenticated}
+                            onLogout={onLogout}
+                        />
                     </DesktopNav>
                 </StyledToolbar>
             </StyledAppBar>
@@ -110,9 +131,9 @@ export const Navbar = ({
             >
                 <DrawerHeader>
                     <BrandLink to={ROUTES.HOME} onClick={onCloseDrawer}>
-                        <BrandTitle component="span" variant="h3">
-                            GitHub Explorer
-                        </BrandTitle>
+                        <Typography component="span" variant="h3">
+                            {APP_CONFIG.APP_NAME}
+                        </Typography>
                     </BrandLink>
 
                     <IconButton
@@ -125,36 +146,13 @@ export const Navbar = ({
                 </DrawerHeader>
 
                 <DrawerNav aria-label="Mobile navigation">
-                    {navItems.map((item) => (
-                        <StyledNavLink
-                            key={item.path}
-                            to={item.path}
-                            end={item.path === ROUTES.HOME}
-                            onClick={onCloseDrawer}
-                        >
-                            {item.label}
-                        </StyledNavLink>
-                    ))}
-
-                    {isAuthenticated ? (
-                        <AuthActionButton
-                            variant="outlined"
-                            fullWidth
-                            onClick={handleLogoutClick}
-                        >
-                            Logout
-                        </AuthActionButton>
-                    ) : (
-                        <AuthActionButton
-                            component={Link}
-                            to={ROUTES.LOGIN}
-                            variant="outlined"
-                            fullWidth
-                            onClick={onCloseDrawer}
-                        >
-                            Login
-                        </AuthActionButton>
-                    )}
+                    <NavContent
+                        navItems={navItems}
+                        isAuthenticated={isAuthenticated}
+                        onLogout={onLogout}
+                        onItemClick={onCloseDrawer}
+                        fullWidthAction
+                    />
                 </DrawerNav>
             </MobileDrawer>
         </>

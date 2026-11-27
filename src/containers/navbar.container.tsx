@@ -3,16 +3,19 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Navbar } from '@components';
-import { ROUTES, STORAGE_KEYS } from '@constant';
+import { ROUTES } from '@constant';
+import {
+    logout,
+    selectIsAuthenticated,
+    useAppDispatch,
+    useAppSelector,
+} from '@store';
 
 export const NavbarContainer = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const navigate = useNavigate();
-
-    // Replace with useAppSelector
-    const isAuthenticated = Boolean(
-        localStorage.getItem(STORAGE_KEYS.AUTH_TOKEN),
-    );
+    const dispatch = useAppDispatch();
+    const isAuthenticated = useAppSelector(selectIsAuthenticated);
 
     const handleOpenDrawer = () => {
         setMobileOpen(true);
@@ -23,9 +26,7 @@ export const NavbarContainer = () => {
     };
 
     const handleLogout = () => {
-        // Replace with dispatch
-        localStorage.removeItem(STORAGE_KEYS.AUTH_TOKEN);
-        localStorage.removeItem(STORAGE_KEYS.AUTH_USER);
+        dispatch(logout());
         void navigate(ROUTES.HOME);
     };
 

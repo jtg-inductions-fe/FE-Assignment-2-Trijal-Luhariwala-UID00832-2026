@@ -1,25 +1,19 @@
 import { Link, NavLink } from 'react-router-dom';
 
-import {
-    AppBar,
-    Button,
-    Drawer,
-    IconButton,
-    Toolbar,
-    Typography,
-} from '@mui/material';
+import { AppBar, Button, Drawer, IconButton, Toolbar } from '@mui/material';
 import { styled } from '@mui/material/styles';
+
+import { CONTENT_MAX_WIDTH } from '@constant';
 
 export const StyledAppBar = styled(AppBar)(({ theme }) => ({
     backgroundColor: theme.palette.background.paper,
-    borderBottom: `1px solid ${theme.palette.divider}`,
-    backgroundImage: 'none',
+    borderBottom: `${theme.mixins.toRem(1)} solid ${theme.palette.divider}`,
 }));
 
 export const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     width: '100%',
-    maxWidth: theme.mixins.toRem(2000),
-    margin: '0 auto',
+    maxWidth: theme.mixins.toRem(CONTENT_MAX_WIDTH),
+    marginInline: 'auto',
     minHeight: theme.mixins.toRem(80),
     paddingInline: theme.spacing(4),
     ...theme.mixins.flex('space-between', 'center', 'row'),
@@ -31,7 +25,6 @@ export const BrandGroup = styled('div')(({ theme }) => ({
 
 export const MenuToggleButton = styled(IconButton)(({ theme }) => ({
     color: theme.palette.text.primary,
-    padding: theme.spacing(1),
 
     [theme.breakpoints.up('md')]: {
         display: 'none',
@@ -42,10 +35,6 @@ export const BrandLink = styled(Link)(({ theme }) => ({
     textDecoration: 'none',
     color: theme.palette.text.primary,
 }));
-
-export const BrandTitle = styled(Typography)({
-    display: 'block',
-}) as typeof Typography;
 
 export const DesktopNav = styled('nav')(({ theme }) => ({
     display: 'none',
@@ -60,7 +49,7 @@ export const StyledNavLink = styled(NavLink)(({ theme }) => ({
     color: theme.palette.text.secondary,
     fontSize: theme.typography.subtitle1.fontSize,
     fontWeight: theme.typography.subtitle1.fontWeight,
-    transition: 'color 0.2s ease',
+    transition: theme.transitions.create('color'),
 
     '&:hover': {
         color: theme.palette.text.primary,
@@ -86,8 +75,7 @@ export const AuthActionButton = styled(Button)(({ theme }) => ({
 export const MobileDrawer = styled(Drawer)(({ theme }) => ({
     '& .MuiDrawer-paper': {
         width: theme.mixins.toRem(250),
-        backgroundColor: theme.palette.background.paper,
-        borderRight: `1px solid ${theme.palette.divider}`,
+        borderRight: `${theme.mixins.toRem(1)} solid ${theme.palette.divider}`,
         backgroundImage: 'none',
         padding: theme.spacing(4),
     },
@@ -100,7 +88,7 @@ export const MobileDrawer = styled(Drawer)(({ theme }) => ({
 export const DrawerHeader = styled('div')(({ theme }) => ({
     paddingBottom: theme.spacing(4),
     marginBottom: theme.spacing(4),
-    borderBottom: `1px solid ${theme.palette.divider}`,
+    borderBottom: `${theme.mixins.toRem(1)} solid ${theme.palette.divider}`,
     ...theme.mixins.flex('space-between', 'center', 'row'),
 }));
 

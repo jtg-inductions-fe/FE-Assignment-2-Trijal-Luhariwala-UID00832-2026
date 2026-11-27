@@ -1,3 +1,5 @@
+import { ROUTES } from './routeConstants';
+
 /**
  * LocalStorage keys for persisting authentication state.
  * @constant
@@ -22,6 +24,7 @@ export const API_ENDPOINTS = {
  * @constant
  */
 export const APP_CONFIG = {
+    APP_NAME: 'GitHub Explorer',
     DEFAULT_API_URL: 'https://api.github.com',
     DEFAULT_TIMEOUT_MS: 10000,
     SEARCH_RESULTS_PER_PAGE: 10,
@@ -46,3 +49,22 @@ export const ERROR_MESSAGES = {
     VALIDATION_ERROR:
         'Invalid search query or request parameters. Please refine your input.',
 } as const;
+
+export interface NavItem {
+    label: string;
+    path: string;
+}
+
+export const BASE_NAV_ITEMS: readonly NavItem[] = [
+    { label: 'Search', path: ROUTES.HOME },
+];
+
+export const AUTH_ONLY_NAV_ITEMS: readonly NavItem[] = [
+    { label: 'Suggestions', path: ROUTES.SUGGESTIONS },
+    { label: 'Profile', path: ROUTES.PROFILE },
+];
+
+export const getNavItems = (isAuthenticated: boolean): readonly NavItem[] =>
+    isAuthenticated
+        ? [...BASE_NAV_ITEMS, ...AUTH_ONLY_NAV_ITEMS]
+        : BASE_NAV_ITEMS;

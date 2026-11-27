@@ -1,1 +1,1 @@
-export { apiClient } from './apiClient';
+export { apiClient, setUnauthorizedHandler } from './apiClient';
