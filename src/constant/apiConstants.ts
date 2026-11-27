@@ -27,6 +27,7 @@ export const APP_CONFIG = {
     DEFAULT_TIMEOUT_MS: 10000,
     SEARCH_RESULTS_PER_PAGE: 10,
     SUGGESTIONS_LIMIT: 8,
+    SEARCH_DEBOUNCE_MS: 1000,
 } as const;
 
 /**
