@@ -72,3 +72,9 @@ export const HTML_FONT_SIZE = 10;
  * @constant
  */
 export const SCALING_FACTOR = 4;
+
+/**
+ * Max width defined for containerization.
+ * @constant
+ */
+export const CONTENT_MAX_WIDTH = 2000;

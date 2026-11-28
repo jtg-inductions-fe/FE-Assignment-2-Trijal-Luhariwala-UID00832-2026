@@ -17,6 +17,10 @@ export const components: Components = {
               font-size: 62.5%;
               height: 100%;
             }
+            body,
+            #root {
+              height: 100%;
+            }
             @font-face {
               font-display: swap; 
               font-family: 'Inter';

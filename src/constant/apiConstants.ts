@@ -22,6 +22,7 @@ export const API_ENDPOINTS = {
  * @constant
  */
 export const APP_CONFIG = {
+    APP_NAME: 'GitHub Explorer',
     DEFAULT_API_URL: 'https://api.github.com',
     DEFAULT_TIMEOUT_MS: 10000,
     SEARCH_RESULTS_PER_PAGE: 10,

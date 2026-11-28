@@ -1438,9 +1438,9 @@ __metadata:
   linkType: hard
 
 "@types/estree@npm:^1.0.10, @types/estree@npm:^1.0.6":
-  version: 1.0.10
-  resolution: "@types/estree@npm:1.0.10"
-  checksum: 10c0/d258926dac68425e77e43fd64045123b77f998ab2cf0bd0cc5a6ff016c365e60ed26f42adac64551906c1beab3bea08d60d113f905829ac60cfd6409db4761e9
+  version: 1.0.11
+  resolution: "@types/estree@npm:1.0.11"
+  checksum: 10c0/1a3f48546509f10e6359eeabaf35e8f033aa0e170e1812348a6e819e8e3d0697b5121efba7fc4b4061ba1da98b74792ce225d52d0f22ed276eea5fdb2c6c71e3
   languageName: node
   linkType: hard
 
@@ -2006,9 +2006,9 @@ __metadata:
   linkType: hard
 
 "caniuse-lite@npm:^1.0.30001826":
-  version: 1.0.30001826
-  resolution: "caniuse-lite@npm:1.0.30001826"
-  checksum: 10c0/11e9dba4dd105d270f69da022ce6a47be67cd1cc376f74029f99524ba8141a840153aa285f22c9a643a2fe608ffc0879592bcc9b7c20ad6875ad7ede663a1a6d
+  version: 1.0.30001828
+  resolution: "caniuse-lite@npm:1.0.30001828"
+  checksum: 10c0/502039ade9e280fdcd3362673f615587f4b363ab4a002f6a2c006979928ab3a79a16ea335b76757e3d07c30cefa4b0526b44182b498fe2c8dc52680706d4d960
   languageName: node
   linkType: hard
 
@@ -2313,9 +2313,9 @@ __metadata:
   linkType: hard
 
 "electron-to-chromium@npm:^1.5.486":
-  version: 1.5.492
-  resolution: "electron-to-chromium@npm:1.5.492"
-  checksum: 10c0/c0ea729b8b0a6b3c5c3dd9ebce109833e80383e21e0ec6423d130263b976277cf93d3c5e1129bc7d3338a36e3ba24457ec789bbc20dc96f29cd2d716ec383d0a
+  version: 1.5.494
+  resolution: "electron-to-chromium@npm:1.5.494"
+  checksum: 10c0/2bcfdeeb57ef2c7eb966eef8780937886dd10afad2daf11004bae44169316297f94d9cdcc642e9807c98637a068b244dcb03d981155c4702d1c71fbbdf7b7f54
   languageName: node
   linkType: hard
 
@@ -4452,30 +4452,33 @@ __metadata:
   linkType: hard
 
 "react-router-dom@npm:^7.18.6":
-  version: 7.18.6
-  resolution: "react-router-dom@npm:7.18.6"
+  version: 7.18.7
+  resolution: "react-router-dom@npm:7.18.7"
   dependencies:
-    react-router: "npm:7.18.6"
+    react-router: "npm:7.18.7"
   peerDependencies:
     react: ">=18"
     react-dom: ">=18"
-  checksum: 10c0/6a564a97e4bbd5278673c7fa4fd8c66722abecc783bd57fd41a3bde7585b3312ead7cb31ba5cf8fc6e0e5989791e3c01ab40f7d92c96706db48559983871a202
+  checksum: 10c0/3fab30eca16a629d379c166d51f541fd710facc38a344931dd4ee9889f47100fe011a34a10eec00d6f39eb3a9b7a21beeea541896597311cba28d31a4480d077
   languageName: node
   linkType: hard
 
-"react-router@npm:7.18.6":
-  version: 7.18.6
-  resolution: "react-router@npm:7.18.6"
+"react-router@npm:7.18.7":
+  version: 7.18.7
+  resolution: "react-router@npm:7.18.7"
   dependencies:
     cookie: "npm:^1.0.1"
     set-cookie-parser: "npm:^2.6.0"
   peerDependencies:
+    "@types/react": ">=18"
     react: ">=18"
     react-dom: ">=18"
   peerDependenciesMeta:
+    "@types/react":
+      optional: true
     react-dom:
       optional: true
-  checksum: 10c0/1227a7fc566f47799a2f157213e07dcafff584b08454ec46c74ff05babe3c2adf10c25701ce546141be1b328675b658312af3ae6dcca5c551ee9a5c88732067c
+  checksum: 10c0/6c7010ae75e15d55c663921f7e7083ec2bbb4859d70158f11e24f28f97132317abf9aaa4a2545b34da35623ee26a67f0367016c1d10a9c261f5c7ae518e352d0
   languageName: node
   linkType: hard
 
