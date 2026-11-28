@@ -17,6 +17,8 @@ import {
 } from './navbar.styles';
 import { NavContent } from './navbarContent.component';
 
+const MOBILE_NAV_ID = 'mobile-navigation-drawer';
+
 export interface NavbarProps {
     isAuthenticated: boolean;
     mobileOpen: boolean;
@@ -24,7 +26,6 @@ export interface NavbarProps {
     onCloseDrawer: () => void;
     onLogout: () => void;
 }
-
 export const Navbar = ({
     isAuthenticated,
     mobileOpen,
@@ -43,6 +44,9 @@ export const Navbar = ({
                             edge="start"
                             aria-label="Open navigation menu"
                             aria-expanded={mobileOpen}
+                            aria-controls={
+                                mobileOpen ? MOBILE_NAV_ID : undefined
+                            }
                             onClick={onOpenDrawer}
                         >
                             <MenuIcon />
@@ -86,7 +90,7 @@ export const Navbar = ({
                     </IconButton>
                 </DrawerHeader>
 
-                <DrawerNav aria-label="Mobile navigation">
+                <DrawerNav aria-label="Mobile navigation" id={MOBILE_NAV_ID}>
                     <NavContent
                         navItems={navItems}
                         isAuthenticated={isAuthenticated}

@@ -46,4 +46,4 @@ export {
     selectAuthUser,
     selectIsAuthenticated,
 } from './selectors/authSelector';
-export { useAppDispatch, useAppSelector } from './hooks';
+export { useAppDispatch, useAppSelector, useAuth } from './hooks';

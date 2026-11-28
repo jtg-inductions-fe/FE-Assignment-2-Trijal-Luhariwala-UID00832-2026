@@ -4,18 +4,13 @@ import { useNavigate } from 'react-router-dom';
 
 import { Navbar } from '@components';
 import { ROUTES } from '@constant';
-import {
-    logout,
-    selectIsAuthenticated,
-    useAppDispatch,
-    useAppSelector,
-} from '@store';
+import { logout, useAppDispatch, useAuth } from '@store';
 
 export const NavbarContainer = () => {
     const [mobileOpen, setMobileOpen] = useState(false);
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
-    const isAuthenticated = useAppSelector(selectIsAuthenticated);
+    const { isAuthenticated } = useAuth();
 
     const handleOpenDrawer = () => {
         setMobileOpen(true);
@@ -26,8 +21,10 @@ export const NavbarContainer = () => {
     };
 
     const handleLogout = () => {
-        dispatch(logout());
-        void navigate(ROUTES.HOME);
+        void navigate(ROUTES.HOME, { replace: true });
+        setTimeout(() => {
+            dispatch(logout());
+        }, 0);
     };
 
     return (
